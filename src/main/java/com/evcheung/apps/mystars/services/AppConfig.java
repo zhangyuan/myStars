@@ -13,8 +13,8 @@ public class AppConfig {
         return clientSecret;
     }
 
-    @Value("${client-id}")
+    @Value("${client-id:client_id_place_holder}")
     private String clientId;
-    @Value("${client-secret}")
+    @Value("${client-secret:client_secret_place_holder}")
     private String clientSecret;
 }
