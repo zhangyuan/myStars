@@ -14,4 +14,8 @@ public class SimpleStatusCode {
     public void shouldBeOk() {
         assertThat(statusCode).isEqualTo(HttpStatus.OK);
     }
+
+    public void shouldBe(HttpStatus status) {
+        assertThat(statusCode).isEqualTo(status);
+    }
 }
