@@ -10,4 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface StarRepository extends CrudRepository<Star, Long> {
     Page<Star> findAll(Pageable pageable);
+
+    Star findFirstByOwnerAndRepositoryName(String owner, String repo);
 }

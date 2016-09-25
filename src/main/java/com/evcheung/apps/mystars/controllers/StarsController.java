@@ -32,7 +32,11 @@ public class StarsController {
                                  @PathVariable("repo") String repo,
                                  @RequestBody StarRequest request){
 
-        Star star = new Star();
+        Star star = starRepository.findFirstByOwnerAndRepositoryName(owner, repo);
+
+        if (star == null) {
+            star = new Star();
+        }
         star.setOwner(owner);
         star.setRepositoryName(repo);
         List<Tag> tags = request.getTags().stream().map(title -> {
