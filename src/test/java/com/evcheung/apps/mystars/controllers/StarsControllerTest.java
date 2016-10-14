@@ -19,7 +19,7 @@ public class StarsControllerTest  extends ControllerTest{
     }
 
     @Test
-    public void should_return_ok_when_create_star() throws Exception {
+    public void should_return_ok_and_created_start_after_creating_star() throws Exception {
         HashMap<String, Object> payload = new HashMap<>();
         payload.put("tags", Arrays.asList("ReactJS", "Redux"));
         SimpleResponse simpleResponse = put("/starred/reactjs/redux", payload);
@@ -50,7 +50,7 @@ public class StarsControllerTest  extends ControllerTest{
     }
 
     @Test
-    public void should_return_update_star_given_same_owner_and_repository_name_when_get_stars() throws Exception {
+    public void should_update_star_given_same_owner_and_repository_name_when_get_stars() throws Exception {
         HashMap<String, Object> payload = new HashMap<>();
         payload.put("tags", Arrays.asList("ReactJS", "Redux"));
         put("/starred/reactjs/redux", payload);
