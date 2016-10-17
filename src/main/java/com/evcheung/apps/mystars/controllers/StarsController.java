@@ -2,6 +2,7 @@ package com.evcheung.apps.mystars.controllers;
 
 import com.evcheung.apps.mystars.entities.Star;
 import com.evcheung.apps.mystars.entities.Tag;
+import com.evcheung.apps.mystars.providers.GitHubProvider;
 import com.evcheung.apps.mystars.repositories.StarRepository;
 import com.evcheung.apps.mystars.requests.GitHubImportRequest;
 import com.evcheung.apps.mystars.requests.StarRequest;
@@ -21,6 +22,9 @@ import java.util.stream.Collectors;
 public class StarsController {
     @Autowired
     StarRepository starRepository;
+
+    @Autowired
+    GitHubProvider gitHubProvider;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity index(){
@@ -57,12 +61,12 @@ public class StarsController {
         return starRepository.save(star);
     }
 
-    @RequestMapping(path = "import", method = RequestMethod.PUT)
-    public ResponseEntity importFromGitHub(
-                                 @RequestBody GitHubImportRequest request){
+    @RequestMapping(path = "sync", method = RequestMethod.PUT)
+    public ResponseEntity sync(@RequestBody GitHubImportRequest request){
         RestTemplate restTemplate = new RestTemplate();
 
-        String url = "https://api.github.com/users/" + request.getUsername() + "/starred";
+        String url = gitHubProvider.starsUrl(request.getUsername());
+
         GitHubStarred[] starred = restTemplate.getForEntity(url, GitHubStarred[].class).getBody();
 
         for (int i = 0; i <  starred.length; i++) {
