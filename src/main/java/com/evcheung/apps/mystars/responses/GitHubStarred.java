@@ -1,4 +1,4 @@
-package com.evcheung.apps.mystars.controllers;
+package com.evcheung.apps.mystars.responses;
 
 //@JsonIgnoreProperties(ignoreUnknown = true)
 public class GitHubStarred {

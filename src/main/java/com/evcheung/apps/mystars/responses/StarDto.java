@@ -1,4 +1,4 @@
-package com.evcheung.apps.mystars.controllers;
+package com.evcheung.apps.mystars.responses;
 
 import com.evcheung.apps.mystars.entities.Star;
 

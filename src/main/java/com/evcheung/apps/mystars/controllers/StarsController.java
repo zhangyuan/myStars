@@ -6,6 +6,8 @@ import com.evcheung.apps.mystars.providers.GitHubProvider;
 import com.evcheung.apps.mystars.repositories.StarRepository;
 import com.evcheung.apps.mystars.requests.GitHubImportRequest;
 import com.evcheung.apps.mystars.requests.StarRequest;
+import com.evcheung.apps.mystars.responses.GitHubStarred;
+import com.evcheung.apps.mystars.responses.StarDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -71,7 +73,7 @@ public class StarsController {
 
         for (int i = 0; i <  starred.length; i++) {
             GitHubStarred x = starred[i];
-            saveStar(x.getName(), x.getOwner().login, new ArrayList<>());
+            saveStar(x.getName(), x.getOwner().getLogin(), new ArrayList<>());
         }
 
         return ResponseEntity.ok().build();

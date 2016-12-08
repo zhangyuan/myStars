@@ -1,6 +1,8 @@
 package com.evcheung.apps.mystars.controllers;
 
 import com.evcheung.apps.mystars.providers.GitHubProvider;
+import com.evcheung.apps.mystars.responses.GitHubOwner;
+import com.evcheung.apps.mystars.responses.GitHubStarred;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
@@ -16,7 +18,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
-import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFORE_CLASS;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment= SpringBootTest.WebEnvironment.RANDOM_PORT)
